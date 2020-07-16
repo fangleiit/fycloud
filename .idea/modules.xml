@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/eureka-server/eureka-server.iml" filepath="$PROJECT_DIR$/eureka-server/eureka-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fycloud.iml" filepath="$PROJECT_DIR$/fycloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microcloud-api/microcloud-api.iml" filepath="$PROJECT_DIR$/microcloud-api/microcloud-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microcloud-consumer-80/microcloud-consumer-80.iml" filepath="$PROJECT_DIR$/microcloud-consumer-80/microcloud-consumer-80.iml" />
+      <module fileurl="file://$PROJECT_DIR$/microcloud-provider-dept-8001/microcloud-provider-dept-8001.iml" filepath="$PROJECT_DIR$/microcloud-provider-dept-8001/microcloud-provider-dept-8001.iml" />
+    </modules>
+  </component>
+</project>

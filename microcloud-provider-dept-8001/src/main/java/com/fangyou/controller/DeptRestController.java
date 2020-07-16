@@ -1,0 +1,30 @@
+package com.fangyou.controller;
+
+
+import com.fangyou.service.IDeptService;
+import com.fangyou.entity.Dept;
+import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
+
+@RestController
+public class DeptRestController {
+
+    @Resource
+    public IDeptService deptService;
+
+    @RequestMapping(value = "/dept/findById/{id}",method = RequestMethod.GET)
+    public Object findById(@PathVariable("id") long id){
+       return deptService.findById(id);
+    }
+
+    @RequestMapping(value = "/dept/add",method = RequestMethod.POST)
+    public Object add(@RequestBody Dept dept){
+        return deptService.addDept(dept);
+    }
+
+    @RequestMapping(value = "/dept/list",method = RequestMethod.GET)
+    public Object list(){
+        return deptService.findAll();
+    }
+}
