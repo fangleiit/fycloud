@@ -7,7 +7,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="microcloud-consumer-80" />
-        <module name="eureka-server" />
         <module name="microcloud-provider-dept-8001" />
         <module name="microcloud-api" />
       </profile>
