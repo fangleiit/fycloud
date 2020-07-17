@@ -19,18 +19,32 @@ public class ConsumerController {
     @Resource
     private RestTemplate restTemplate;
 
+    /**
+     * 根据id查找部门信息
+     * @param id
+     * @return
+     */
     @RequestMapping("/consuer/dept/findById")
     public Object findById(long id){
         Dept dept = restTemplate.getForObject(DEPT_FINDBYID_URL+id,Dept.class);
         return dept;
     }
 
+    /**
+     * 查找所有部门信息
+     * @return
+     */
     @RequestMapping("/consuer/dept/list")
     public Object list(){
         List<Dept> depts = restTemplate.getForObject(DEPT_FINDALL_URL, List.class);
         return depts;
     }
 
+    /**
+     * 新增部门
+     * @param dept
+     * @return
+     */
     @RequestMapping("/consuer/dept/add")
     public Object add(Dept dept){
         boolean flag = restTemplate.postForObject(DEPT_ADD_URL,dept,Boolean.class);

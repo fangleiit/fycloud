@@ -39,7 +39,7 @@ public class LoginController {
         modelMap.addAttribute("name","fangyou");
         modelMap.addAttribute("age",30);
         modelMap.addAttribute("sex","woman");
-        return "/html/usethymeleaf/userbase";
+        return "html/usethymeleaf/userbase";
     }
 
     /**
@@ -54,7 +54,7 @@ public class LoginController {
         modelMap.addAttribute("username","方优");
         request.setAttribute("request","i am request");
         request.getSession().setAttribute("session","i am session");
-        return "/html/usethymeleaf/useinline";
+        return "html/usethymeleaf/useinline";
     }
 
     /**
@@ -68,6 +68,6 @@ public class LoginController {
         modelMap.addAttribute("depts",restTemplate.getForObject(DEPT_FINDALL_URL, List.class));
         modelMap.addAttribute("count",12);
         modelMap.addAttribute("date",new Date());
-        return "/html/usethymeleaf/useothers";
+        return "html/usethymeleaf/useothers";
     }
 }
