@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <h1>内联</h1>
+        <div th:inline="text">
+            <p>Hello,[[${username}]]</p>
+            <br/>
+        </div>
+    </div>
+    <div>
+        <h1>不使用内联</h1>
+        <p th:text="|Hello, ${username} !| "></p>
+        <p th:text="'Hello,' +${username}+ '!' "></p>
+        <br/>
+    </div>
+
+    <div>
+        <h1>基本对象</h1>
+        <p th:text="${#request.getAttribute('request')}"></p>
+        <br/>
+        <p th:text="${session.session}"></p>
+        Established locale country: <span th:text="${#locale.country}">CNN</span>.
+    </div>
+
+    <script th:inline="javascript">
+        var name = [[${username}]] + ', Sebastian';
+        alert(name);
+    </script>
+</body>
+</html>

@@ -1,6 +1,7 @@
 package com.fangyou.controller;
 
 import com.fangyou.entity.Dept;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
