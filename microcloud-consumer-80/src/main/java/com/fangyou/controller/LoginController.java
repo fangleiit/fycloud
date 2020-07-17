@@ -21,7 +21,12 @@ public class LoginController {
     @Resource
     private RestTemplate restTemplate;
 
-    @RequestMapping("/consuer/hello")
+    /**
+     *  thymeleaf基本使用
+     * @param modelMap
+     * @return
+     */
+    @RequestMapping("/consuer/thymeleaf/usebase")
     public String helloIndex(ModelMap modelMap){
         List<Dept> depts = restTemplate.getForObject(DEPT_FINDALL_URL, List.class);
         modelMap.addAttribute("message","你好thymeleaf");
@@ -34,22 +39,35 @@ public class LoginController {
         modelMap.addAttribute("name","fangyou");
         modelMap.addAttribute("age",30);
         modelMap.addAttribute("sex","woman");
-        return "/html/usethymeleaf/baseuse";
+        return "/html/usethymeleaf/userbase";
     }
 
-    @RequestMapping("/consuer/inline")
+    /**
+     *  thymeleaf 内联使用
+     *  用于jsvascript取值
+     * @param request
+     * @param modelMap
+     * @return
+     */
+    @RequestMapping("/consuer/thymeleaf/inline")
     public String inline(HttpServletRequest request,ModelMap modelMap){
         modelMap.addAttribute("username","方优");
         request.setAttribute("request","i am request");
         request.getSession().setAttribute("session","i am session");
         return "/html/usethymeleaf/useinline";
     }
-    @RequestMapping("/consuer/usedate")
+
+    /**
+     * thymeleaf其他用法
+     * @param modelMap
+     * @return
+     */
+    @RequestMapping("/consuer/thymeleaf/useothers")
     public String date(ModelMap modelMap){
         modelMap.addAttribute("userName","Hello,方优");
         modelMap.addAttribute("depts",restTemplate.getForObject(DEPT_FINDALL_URL, List.class));
         modelMap.addAttribute("count",12);
         modelMap.addAttribute("date",new Date());
-        return "/html/usethymeleaf/usedate";
+        return "/html/usethymeleaf/useothers";
     }
 }
