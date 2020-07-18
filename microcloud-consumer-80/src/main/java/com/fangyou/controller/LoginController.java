@@ -70,4 +70,5 @@ public class LoginController {
         modelMap.addAttribute("date",new Date());
         return "html/usethymeleaf/useothers";
     }
+
 }

@@ -7,7 +7,8 @@
 		<module>microcloud-api</module>
 		<module>microcloud-provider-dept-8001</module>
 		<module>microcloud-consumer-80</module>
-	</modules>
+        <module>microcloud-provider-login-8002</module>
+    </modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
