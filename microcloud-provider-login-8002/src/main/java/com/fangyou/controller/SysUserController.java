@@ -4,6 +4,7 @@ import com.fangyou.entity.Dept;
 import com.fangyou.entity.SysUser;
 import com.fangyou.service.ISysUserService;
 import org.eclipse.jetty.util.StringUtil;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;

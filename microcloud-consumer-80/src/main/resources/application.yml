@@ -3,3 +3,8 @@ server:
 spring:
   thymeleaf:
     cache: false
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

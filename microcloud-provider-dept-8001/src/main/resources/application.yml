@@ -18,3 +18,10 @@ spring:
       initial-size: 5
       max-total: 5
       max-wait-millis: 200
+  application:
+    name: dept8001
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
