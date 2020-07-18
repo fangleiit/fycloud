@@ -2,12 +2,15 @@ package com.fangyou.controller;
 
 import com.fangyou.entity.Dept;
 import com.fangyou.entity.SysUser;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 
 @RestController
@@ -81,9 +84,9 @@ public class ConsumerController {
      * @param sysUser
      * @return
      */
-    @RequestMapping("/consuer/login")
-    public Object login(SysUser sysUser){
-        SysUser user = restTemplate.postForObject(SYSUSER_FINDBYUNAMEANDPWORD_URL,sysUser,SysUser.class);
-        return user;
-    }
+//    @RequestMapping("/consuer/login")
+//    public Object login(SysUser sysUser){
+//        ResponseEntity<SysUser> user = restTemplate.(SYSUSER_FINDBYUNAMEANDPWORD_URL,SysUser.class,sysUser);
+//        return user;
+//    }
 }

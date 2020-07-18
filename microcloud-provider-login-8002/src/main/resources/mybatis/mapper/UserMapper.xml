@@ -5,7 +5,7 @@
     <select id="findUsers" resultType="SysUser">
         select * from sys_user
     </select>
-    <select id="findUserById" parameterType="long" resultType="Dept">
+    <select id="findUserById" parameterType="long" resultType="SysUser">
         select * from sys_user where id = #{id}
     </select>
     <select id="findSysUserByUserNameAndPassword" parameterType="SysUser" resultType="SysUser">

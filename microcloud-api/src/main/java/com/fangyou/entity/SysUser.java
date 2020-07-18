@@ -3,6 +3,7 @@ package com.fangyou.entity;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -10,7 +11,7 @@ import java.util.Date;
 @Data
 public class SysUser implements Serializable {
     private static final long serialVersionUID = -2128580645665341227L;
-    private BigInteger id;
+    private Long id;
     private String username;
     private String password;
     private String email;

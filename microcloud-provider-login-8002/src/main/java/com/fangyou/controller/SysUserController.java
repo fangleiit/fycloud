@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 
 @RestController
@@ -36,18 +38,18 @@ public class SysUserController {
      */
     @RequestMapping(value = "/sysuser/findsysuserbyid/{id}",method = RequestMethod.GET)
     public SysUser findSysUserById(@PathVariable("id") long id){
-        return sysUserService.findUserById(id);
+        SysUser sysUser = sysUserService.findUserById(id);
+        return sysUser;
     }
 
     /**
      * 登录
      * @param request
-     * @param modelMap
      * @param sysUser
      * @return
      */
-    @RequestMapping(value = "/sysuser/login",method = RequestMethod.POST)
-    public SysUser login(HttpServletRequest request,ModelMap modelMap,@RequestBody SysUser sysUser){
+    @RequestMapping(value = "/sysuser/login",method = RequestMethod.GET)
+    public SysUser login(HttpServletRequest request,@RequestBody SysUser sysUser){
         List<SysUser> sysUsers = sysUserService.findSysUserByUserNameAndPassword(sysUser);
         if(!StringUtils.isEmpty(sysUsers)){
             return sysUsers.get(0);
