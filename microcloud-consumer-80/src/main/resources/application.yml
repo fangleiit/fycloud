@@ -3,8 +3,14 @@ server:
 spring:
   thymeleaf:
     cache: false
+  application:
+    name: consumer80
 management:
   endpoints:
     web:
       exposure:
         include: "*"
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1111/eureka/

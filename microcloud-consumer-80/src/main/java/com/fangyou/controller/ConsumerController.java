@@ -45,7 +45,7 @@ public class ConsumerController {
      */
     @RequestMapping("/consuer/dept/list")
     public Object list(){
-        List<Dept> depts = restTemplate.getForObject(DEPT_FINDALL_URL, List.class);
+        List<Dept> depts = restTemplate.getForObject("http://dept8010/dept/list/", List.class);
         return depts;
     }
 
