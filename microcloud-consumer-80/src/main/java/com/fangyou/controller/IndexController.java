@@ -1,6 +1,7 @@
 package com.fangyou.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -54,7 +55,17 @@ public class IndexController {
      * @return
      */
     @RequestMapping("/login")
-    public String login(){
+    public String login(HttpServletRequest request, ModelMap modelMap){
+        modelMap.addAttribute("errorMsg","用户名或者密码错误!");
         return "html/login/login";
+    }
+
+    /**
+     * 注册页面
+     * @return
+     */
+    @RequestMapping("/toRegister")
+    public String toRegister(HttpServletRequest request, ModelMap modelMap){
+        return "html/login/register";
     }
 }
