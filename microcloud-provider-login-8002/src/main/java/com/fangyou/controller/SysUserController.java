@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
+import java.util.Random;
 
 @RestController
 public class SysUserController {
@@ -44,17 +45,23 @@ public class SysUserController {
     }
 
     /**
-     * 登录
-     * @param request
+     * 登录用户验证
      * @param sysUser
      * @return
      */
-    @RequestMapping(value = "/sysuser/login",method = RequestMethod.GET)
-    public SysUser login(HttpServletRequest request,@RequestBody SysUser sysUser){
+    @RequestMapping(value = "/sysuser/findloginuser",method = RequestMethod.POST)
+    public SysUser findloginuser(SysUser sysUser){
         List<SysUser> sysUsers = sysUserService.findSysUserByUserNameAndPassword(sysUser);
         if(!StringUtils.isEmpty(sysUsers)){
             return sysUsers.get(0);
         }
         return null;
+    }
+
+    @RequestMapping(value = "/sysuser/hellohystrix",method = RequestMethod.GET)
+    public String hellohystrix() throws InterruptedException {
+        int sleepTime = new Random().nextInt(3000);
+        Thread.sleep(sleepTime);
+        return "hellohystrix";
     }
 }

@@ -11,5 +11,5 @@ eureka:
   client:
     service-url:
       defaultZone: http://peer1:1111/eureka/
-    register-with-eureka: true
-    fetch-registry: true
+    register-with-eureka: true #高可用注册中心
+    fetch-registry: true #高可用注册中心
