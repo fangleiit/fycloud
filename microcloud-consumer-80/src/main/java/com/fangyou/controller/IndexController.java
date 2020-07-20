@@ -47,4 +47,14 @@ public class IndexController {
     public String home(HttpServletRequest request){
         return "html/index/home";
     }
+
+
+    /**
+     * 登录页面
+     * @return
+     */
+    @RequestMapping("/login")
+    public String login(){
+        return "html/login/login";
+    }
 }

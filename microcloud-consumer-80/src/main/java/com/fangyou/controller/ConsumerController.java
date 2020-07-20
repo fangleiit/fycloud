@@ -102,32 +102,14 @@ public class ConsumerController {
      */
     @RequestMapping("/consuer/findloginuser")
     public Object findloginuser(SysUser sysUser){
-//        List<Map<String, Object>> list = new ArrayList<>();
-//        Map<String, Object> map = new HashMap<>(16);
-//        List<String> stringList = discoveryClient.getServices();
-//        stringList.forEach(str -> {
-//            List<ServiceInstance> serviceInstances = discoveryClient.getInstances(str);
-//            serviceInstances.forEach(ins -> {
-//                map.put("host", ins.getHost());
-//                map.put("port", ins.getPort());
-//                map.put("serviceId", ins.getServiceId());
-//                map.put("uri", ins.getUri());
-//                list.add(map);
-//            });
-//        });
-
-
-        HttpHeaders headers =new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
-        MultiValueMap params = new LinkedMultiValueMap();
-        params.add("username","fangyou");
-        params.add("password","123456");
-        HttpEntity requestEntity =new HttpEntity<>(params, headers);
-        ResponseEntity<SysUser> responseUser = restTemplate.exchange(SYSUSER_FINDBYUNAMEANDPWORD_URL,HttpMethod.POST,requestEntity,SysUser.class);
-        SysUser loginUser = responseUser.getBody();
-        return loginUser;
+          SysUser responSysUser =  restTemplate.postForObject(SYSUSER_FINDBYUNAMEANDPWORD_URL,sysUser,SysUser.class);
+          return responSysUser;
     }
 
+    /**
+     * 测试断路器
+     * @return
+     */
     @RequestMapping(value = "/consuer/helloConsumer",method = RequestMethod.GET)
     public String helloConsumer(){
         return consumerService.helloService();
