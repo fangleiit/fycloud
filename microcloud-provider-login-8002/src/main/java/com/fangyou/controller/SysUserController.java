@@ -50,7 +50,7 @@ public class SysUserController {
      * @return
      */
     @RequestMapping(value = "/sysuser/findloginuser",method = RequestMethod.POST)
-    public SysUser findloginuser(SysUser sysUser){
+    public SysUser findloginuser(@RequestBody SysUser sysUser){
         List<SysUser> sysUsers = sysUserService.findSysUserByUserNameAndPassword(sysUser);
         if(!StringUtils.isEmpty(sysUsers)){
             return sysUsers.get(0);

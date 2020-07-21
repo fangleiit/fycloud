@@ -14,9 +14,9 @@ import java.util.List;
 @Controller
 public class LoginController {
 
-    public static final String DEPT_FINDBYID_URL = "http://127.0.0.1:8001/dept/findById/";
-    public static final String DEPT_FINDALL_URL = "http://localhost:8001/dept/list/";
-    public static final String DEPT_ADD_URL = "http://127.0.0.1:8001/dept/add/";
+    public static final String DEPT_FINDBYID_URL = "http://dept8010/dept/findById/";
+    public static final String DEPT_FINDALL_URL = "http://dept8010/dept/list/";
+    public static final String DEPT_ADD_URL = "http://dept8010/dept/add/";
 
     @Resource
     private RestTemplate restTemplate;
