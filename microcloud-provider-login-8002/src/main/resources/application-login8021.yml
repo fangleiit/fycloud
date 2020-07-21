@@ -20,6 +20,10 @@ spring:
       max-wait-millis: 200
   application:
     name: login8020
+  security:
+    user:
+      name: admin
+      password: admin
 management:
   endpoints:
     web:

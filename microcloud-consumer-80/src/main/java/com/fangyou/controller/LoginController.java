@@ -1,6 +1,9 @@
 package com.fangyou.controller;
 
 import com.fangyou.entity.Dept;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,6 +23,8 @@ public class LoginController {
 
     @Resource
     private RestTemplate restTemplate;
+    @Resource
+    private HttpHeaders headers;
 
     /**
      *  thymeleaf基本使用
@@ -28,7 +33,8 @@ public class LoginController {
      */
     @RequestMapping("/consuer/thymeleaf/usebase")
     public String helloIndex(ModelMap modelMap){
-        List<Dept> depts = restTemplate.getForObject(DEPT_FINDALL_URL, List.class);
+        HttpEntity<Object> request = new HttpEntity<Object>(headers);
+        List<Dept> depts = restTemplate.exchange(DEPT_FINDALL_URL, HttpMethod.GET,request,List.class).getBody();
         modelMap.addAttribute("message","你好thymeleaf");
         modelMap.addAttribute("username","策士");
         modelMap.addAttribute("flag","yes");
@@ -65,7 +71,8 @@ public class LoginController {
     @RequestMapping("/consuer/thymeleaf/useothers")
     public String date(ModelMap modelMap){
         modelMap.addAttribute("userName","Hello,方优");
-        modelMap.addAttribute("depts",restTemplate.getForObject(DEPT_FINDALL_URL, List.class));
+        HttpEntity<Object> request = new HttpEntity<Object>(headers);
+        modelMap.addAttribute("depts",restTemplate.exchange(DEPT_FINDALL_URL,HttpMethod.GET,request,List.class));
         modelMap.addAttribute("count",12);
         modelMap.addAttribute("date",new Date());
         return "html/usethymeleaf/useothers";

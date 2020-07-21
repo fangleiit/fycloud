@@ -3,6 +3,7 @@ package com.fangyou.controller;
 import com.fangyou.entity.Dept;
 import com.fangyou.entity.SysUser;
 import com.fangyou.service.ISysUserService;
+import org.apache.ibatis.annotations.Param;
 import org.eclipse.jetty.util.StringUtil;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.ui.ModelMap;
@@ -50,7 +51,7 @@ public class SysUserController {
      * @return
      */
     @RequestMapping(value = "/sysuser/findloginuser",method = RequestMethod.POST)
-    public SysUser findloginuser(@RequestBody SysUser sysUser){
+    public SysUser findUsersByNameAndPass(@RequestBody SysUser sysUser){
         List<SysUser> sysUsers = sysUserService.findSysUserByUserNameAndPassword(sysUser);
         if(!StringUtils.isEmpty(sysUsers)){
             return sysUsers.get(0);

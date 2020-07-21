@@ -18,10 +18,8 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.nio.charset.Charset;
+import java.util.*;
 
 @RestController
 public class ConsumerController {
@@ -31,12 +29,15 @@ public class ConsumerController {
     public static final String DEPT_ADD_URL = "http://dept8010/dept/add/";
 
 
-    public static final String SYSUSER_FINDALL_URL = "http://login8002/sysuser/findUsersList/";
-    public static final String SYSUSER_FINDUSERBYID_URL = "http://login8002/sysuser/findsysuserbyid/";
-    public static final String SYSUSER_FINDBYUNAMEANDPWORD_URL = "http://login8002/sysuser/findloginuser/";
+    public static final String SYSUSER_FINDALL_URL = "http://login8020/sysuser/findUsersList/";
+    public static final String SYSUSER_FINDUSERBYID_URL = "http://login8020/sysuser/findsysuserbyid/";
+    public static final String SYSUSER_FINDBYUNAMEANDPWORD_URL = "http://login8020/sysuser/findloginuser/";
 
     @Resource
     private RestTemplate restTemplate;
+
+    @Resource
+    private HttpHeaders headers;
 
     @Resource
     private DiscoveryClient discoveryClient;
@@ -51,7 +52,8 @@ public class ConsumerController {
      */
     @RequestMapping("/consuer/dept/findById")
     public Object findById(long id){
-        Dept dept = restTemplate.getForObject(DEPT_FINDBYID_URL+id,Dept.class);
+        HttpEntity<Object> request = new HttpEntity<Object>(headers);
+        Dept dept = restTemplate.exchange(DEPT_FINDBYID_URL+id,HttpMethod.GET,request,Dept.class).getBody();
         return dept;
     }
 
@@ -61,7 +63,8 @@ public class ConsumerController {
      */
     @RequestMapping("/consuer/dept/list")
     public Object list(){
-        List<Dept> depts = restTemplate.getForObject(DEPT_FINDALL_URL, List.class);
+        HttpEntity<Object> request = new HttpEntity<Object>(headers);
+        List<Dept> depts = restTemplate.exchange(DEPT_FINDALL_URL,HttpMethod.GET,request,List.class).getBody();
         return depts;
     }
 
@@ -72,7 +75,8 @@ public class ConsumerController {
      */
     @RequestMapping("/consuer/dept/add")
     public Object add(Dept dept){
-        boolean flag = restTemplate.postForObject(DEPT_ADD_URL,dept,Boolean.class);
+        HttpEntity<Object> request = new HttpEntity<Object>(dept,headers);
+        boolean flag = restTemplate.exchange(DEPT_ADD_URL,HttpMethod.POST,request,Boolean.class).getBody();
         return flag;
     }
 
@@ -82,7 +86,8 @@ public class ConsumerController {
      */
     @RequestMapping("/consuer/sysuser/list")
     public Object findSysUsers(){
-        return restTemplate.getForObject(SYSUSER_FINDALL_URL, List.class);
+        HttpEntity<Object> request = new HttpEntity<Object>(headers);
+        return restTemplate.exchange(SYSUSER_FINDALL_URL,HttpMethod.GET,request,List.class).getBody();
     }
 
     /**
@@ -92,7 +97,8 @@ public class ConsumerController {
      */
     @RequestMapping("/consuer/sysuser/findusersbyid")
     public Object findUsersById(long id){
-        return restTemplate.getForObject(SYSUSER_FINDUSERBYID_URL+id, SysUser.class);
+        HttpEntity<Object> request = new HttpEntity<Object>(headers);
+        return restTemplate.exchange(SYSUSER_FINDUSERBYID_URL+id,HttpMethod.GET,request,SysUser.class);
     }
 
     /**
@@ -101,9 +107,16 @@ public class ConsumerController {
      * @return
      */
     @RequestMapping("/consuer/findloginuser")
-    public Object findloginuser(SysUser sysUser){
-          SysUser responSysUser =  restTemplate.postForObject(SYSUSER_FINDBYUNAMEANDPWORD_URL,sysUser,SysUser.class);
-          return responSysUser;
+    public Object findUsersByNameAndPass(SysUser sysUser){
+//        MultiValueMap<String, String> map= new LinkedMultiValueMap<>();
+//        map.add("username", sysUser.getUsername());
+//        map.add("password",sysUser.getPassword());
+//        HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(map, headers);
+        HttpEntity<Object> request = new HttpEntity<Object>(sysUser,headers);
+        ResponseEntity<SysUser> responSysUser =  restTemplate.exchange("http://login8020/sysuser/findloginuser/",
+              HttpMethod.POST,request,SysUser.class);
+        SysUser sysUserresult =  responSysUser.getBody();
+        return sysUserresult;
     }
 
     /**
