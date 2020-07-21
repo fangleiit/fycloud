@@ -1,9 +1,11 @@
 package com.fangyou.controller;
 
 import com.fangyou.entity.Dept;
+import com.fangyou.entity.SysUser;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,65 +19,55 @@ import java.util.List;
 @Controller
 public class LoginController {
 
-    public static final String DEPT_FINDBYID_URL = "http://dept8010/dept/findById/";
-    public static final String DEPT_FINDALL_URL = "http://dept8010/dept/list/";
-    public static final String DEPT_ADD_URL = "http://dept8010/dept/add/";
-
     @Resource
     private RestTemplate restTemplate;
     @Resource
     private HttpHeaders headers;
 
     /**
-     *  thymeleaf基本使用
-     * @param modelMap
+     * 登录页面
      * @return
      */
-    @RequestMapping("/consuer/thymeleaf/usebase")
-    public String helloIndex(ModelMap modelMap){
-        HttpEntity<Object> request = new HttpEntity<Object>(headers);
-        List<Dept> depts = restTemplate.exchange(DEPT_FINDALL_URL, HttpMethod.GET,request,List.class).getBody();
-        modelMap.addAttribute("message","你好thymeleaf");
-        modelMap.addAttribute("username","策士");
-        modelMap.addAttribute("flag","yes");
-        modelMap.addAttribute("depts",depts);
-        modelMap.addAttribute("type","link");
-        modelMap.addAttribute("pageId","springcloud/2017/09/11/");
-        modelMap.addAttribute("img","http://www.ityouknow.com/assets/images/neo.jpg");
-        modelMap.addAttribute("name","fangyou");
-        modelMap.addAttribute("age",30);
-        modelMap.addAttribute("sex","woman");
-        return "html/usethymeleaf/userbase";
+    @RequestMapping("/login")
+    public String login(HttpServletRequest request, ModelMap modelMap){
+        modelMap.addAttribute("errorMsg","用户名或者密码错误!");
+        return "html/login/login";
     }
 
     /**
-     *  thymeleaf 内联使用
-     *  用于jsvascript取值
+     * 注册页面
+     * @return
+     */
+    @RequestMapping("/toRegister")
+    public String toRegister(HttpServletRequest request, ModelMap modelMap){
+        return "html/login/register";
+    }
+
+    /**
+     * 登录跳转首页页面
+     * @return
+     */
+    @RequestMapping("/index")
+    public String index(HttpServletRequest request,SysUser sysUser,ModelMap modelMap){
+        HttpEntity<Object> httpEntity = new HttpEntity<Object>(sysUser,headers);
+        ResponseEntity<SysUser> responSysUser =  restTemplate.exchange("http://sysuser8020/sysuser/findloginuser/",
+                HttpMethod.POST,httpEntity,SysUser.class);
+        SysUser sysUserresult =  responSysUser.getBody();
+        request.getSession().setAttribute("sysUser",sysUserresult);
+        modelMap.addAttribute("sysUser",sysUserresult);
+        return "html/index/index";
+    }
+
+
+    /** TODO
+     * 注册
      * @param request
      * @param modelMap
      * @return
      */
-    @RequestMapping("/consuer/thymeleaf/inline")
-    public String inline(HttpServletRequest request,ModelMap modelMap){
-        modelMap.addAttribute("username","方优");
-        request.setAttribute("request","i am request");
-        request.getSession().setAttribute("session","i am session");
-        return "html/usethymeleaf/useinline";
-    }
-
-    /**
-     * thymeleaf其他用法
-     * @param modelMap
-     * @return
-     */
-    @RequestMapping("/consuer/thymeleaf/useothers")
-    public String date(ModelMap modelMap){
-        modelMap.addAttribute("userName","Hello,方优");
-        HttpEntity<Object> request = new HttpEntity<Object>(headers);
-        modelMap.addAttribute("depts",restTemplate.exchange(DEPT_FINDALL_URL,HttpMethod.GET,request,List.class));
-        modelMap.addAttribute("count",12);
-        modelMap.addAttribute("date",new Date());
-        return "html/usethymeleaf/useothers";
+    @RequestMapping("/register")
+    public String register(HttpServletRequest request,ModelMap modelMap){
+        return "html/login/login";
     }
 
 }

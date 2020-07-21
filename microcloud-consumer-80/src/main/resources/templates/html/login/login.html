@@ -10,8 +10,8 @@
     <div layout:fragment="content" class="container"><br/>
         <h1>登录</h1><br/><br/>
         <div class="with:60%">
-            <div style="margin: 10px 90px">没有账号?先去<a th:href="@{toRegister}">注册</a></div>
-            <form class="form-horizontal" th:action="@{/consuer/findloginuser}" method="post">
+            <div style="margin: 10px 90px">没有账号?先去<a th:href="@{/toRegister}">注册</a></div>
+            <form class="form-horizontal" th:action="@{/index}" method="post">
                 <div class="form-group">
                     <label for="username" class="col-sm-2 control-label">Login Name</label>
                     <div class="col-sm-6">

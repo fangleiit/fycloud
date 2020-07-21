@@ -14,7 +14,7 @@
 		<module>microcloud-api</module>
 		<module>microcloud-provider-dept-8001</module>
 		<module>microcloud-consumer-80</module>
-        <module>microcloud-provider-login-8002</module>
+        <module>microcloud-provider-sysuser-8002</module>
         <module>microcloud-eureka-server-1111</module>
     </modules>
 

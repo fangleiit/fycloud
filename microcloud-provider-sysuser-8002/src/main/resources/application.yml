@@ -1,5 +1,5 @@
 server:
-  port: 8022
+  port: 8002
 mybatis:
   config-location: classpath:mybatis/mybatis.cfg.xml
   type-aliases-package: com.fangyou.entity
@@ -19,7 +19,7 @@ spring:
       max-total: 5
       max-wait-millis: 200
   application:
-    name: login8020
+    name: sysuser8002
   security:
     user:
       name: admin
@@ -32,4 +32,4 @@ management:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:1111/eureka/
+      defaultZone: http://localhost:1111/eureka/,http://peer1:1111/eureka/,http://peer2:1112/eureka/
