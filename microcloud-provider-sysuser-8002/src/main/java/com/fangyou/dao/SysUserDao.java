@@ -14,5 +14,5 @@ public interface SysUserDao {
     SysUser findUserById(long id);
     boolean createUser(@Param("sysUser") SysUser sysUser);
     boolean deleteUserById(Long id);
-    List<SysUser> findSysUserByUserNameAndPassword(SysUser sysUser);
+    List<SysUser> findSysUserByUserNameAndPassword(@Param("sysUser") SysUser sysUser);
 }

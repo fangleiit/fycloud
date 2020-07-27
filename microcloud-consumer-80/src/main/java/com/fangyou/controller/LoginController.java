@@ -8,6 +8,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.client.RestTemplate;
 
@@ -30,7 +31,6 @@ public class LoginController {
      */
     @RequestMapping("/login")
     public String login(HttpServletRequest request, ModelMap modelMap){
-        modelMap.addAttribute("errorMsg","用户名或者密码错误!");
         return "html/login/login";
     }
 
@@ -53,6 +53,10 @@ public class LoginController {
         ResponseEntity<SysUser> responSysUser =  restTemplate.exchange("http://sysuser8020/sysuser/findloginuser/",
                 HttpMethod.POST,httpEntity,SysUser.class);
         SysUser sysUserresult =  responSysUser.getBody();
+        if(StringUtils.isEmpty(sysUserresult)){
+            modelMap.addAttribute("errorMsg","用户名或者密码错误!");
+            return "html/login/login";
+        }
         request.getSession().setAttribute("sysUser",sysUserresult);
         modelMap.addAttribute("sysUser",sysUserresult);
         return "html/index/index";

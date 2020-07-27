@@ -9,6 +9,6 @@
         select * from sys_user where id = #{id}
     </select>
     <select id="findSysUserByUserNameAndPassword" parameterType="SysUser" resultType="SysUser">
-        SELECT * FROM sys_user WHERE username = #{sysUser.username} AND PASSWORD = #{sysUser.password}
+        SELECT * FROM sys_user WHERE username = #{sysUser.username} AND password = #{sysUser.password}
     </select>
 </mapper>

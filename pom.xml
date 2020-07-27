@@ -16,6 +16,7 @@
 		<module>microcloud-consumer-80</module>
         <module>microcloud-provider-sysuser-8002</module>
         <module>microcloud-eureka-server-1111</module>
+        <module>microcloud-feign-consumer-8888</module>
     </modules>
 
 	<parent>
