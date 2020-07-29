@@ -60,4 +60,9 @@ public class DeptRestController {
     public String helloFeign3(@RequestBody Dept dept){
         return "HelloFeign" + dept.getDname();
     }
+
+    @RequestMapping(value = "/helloWord",method = RequestMethod.POST)
+    public String HelloWord(@RequestParam String name){
+        return "HelloWorld " + name;
+    }
 }

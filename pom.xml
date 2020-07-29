@@ -96,6 +96,7 @@
 					<version>${spring-boot.version}</version>
 					<configuration>
 						<finalName>${project.build.finalName}</finalName>
+						<fork>true</fork>
 					</configuration>
 					<executions>
 						<execution>
