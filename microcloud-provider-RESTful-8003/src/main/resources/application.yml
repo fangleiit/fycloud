@@ -1,0 +1,9 @@
+server:
+  port: 8003
+spring:
+  resources:
+    cache:
+      period: 6000
+    chain:
+      compressed: true
+      cache: false

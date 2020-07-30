@@ -17,6 +17,7 @@
         <module>microcloud-provider-sysuser-8002</module>
         <module>microcloud-eureka-server-1111</module>
         <module>microcloud-feign-consumer-8888</module>
+        <module>microcloud-provider-RESTful-8003</module>
     </modules>
 
 	<parent>

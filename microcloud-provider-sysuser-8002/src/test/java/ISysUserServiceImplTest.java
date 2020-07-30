@@ -41,11 +41,6 @@ public class ISysUserServiceImplTest {
         }
     }
 
-    @Before
-    public void setUp(){
-        mockMvc = MockMvcBuilders.standaloneSetup(new SysUserController()).build();
-    }
-
     @Test
     public void getFindUsersByNameAndPass() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.post("/sysuser/findloginuser?username=admin&password=123456")
@@ -58,5 +53,19 @@ public class ISysUserServiceImplTest {
                 .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(MockMvcResultMatchers.content().string(Matchers.containsString("小花")));*/
     }
+
+    @Test
+    public void findUsersList() throws Exception {
+        String responseStr = mockMvc.perform(MockMvcRequestBuilders.get("/sysuser/findUsersList")).andReturn()
+                .getResponse().getContentAsString();
+        System.out.println("result : " + responseStr);
+    }
+
+
+    @Before
+    public void setUp(){
+        mockMvc = MockMvcBuilders.standaloneSetup(new SysUserController()).build();
+    }
+
 
 }
