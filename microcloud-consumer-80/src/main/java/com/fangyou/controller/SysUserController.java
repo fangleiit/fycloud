@@ -35,6 +35,17 @@ public class SysUserController {
     }
 
     /**
+     * 查找所有用户信息
+     * @return
+     */
+    @RequestMapping("/sysuser/list2")
+    @ResponseBody
+    public Object findSysUsersT(){
+        HttpEntity<Object> request = new HttpEntity<Object>(headers);
+        return restTemplate.exchange("http://sysuser8002/sysuser/findUsersList/", HttpMethod.GET,request, List.class).getBody();
+    }
+
+    /**
      * 根据id查找用户
      * @param id
      * @return
