@@ -18,6 +18,7 @@
         <module>microcloud-eureka-server-1111</module>
         <module>microcloud-feign-consumer-8888</module>
         <module>microcloud-provider-RESTful-8003</module>
+        <module>microcloud-gateway-5555</module>
     </modules>
 
 	<parent>
