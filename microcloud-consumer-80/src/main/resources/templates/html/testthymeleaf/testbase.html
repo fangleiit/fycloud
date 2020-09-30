@@ -1,51 +1,55 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="~{html/layout/layout}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-    <h1 th:text="${message}">Hello World</h1>
-    <p th:text="${username}">先生</p>
-    <span th:text=" 'welcome to our application,' + ${username} + 'sir' "></span>
-    <br/>
-    <span th:text="|welcome to our application,${username} ! |"></span>
-    <br/>
-    <a th:if="${flag == 'yes'}" th:href="@{http://favorites.ren}">home</a>
-    <br/>
-    <a th:unless="${flag != 'no'}" th:href="@{http://www.ityouknow.com}">ityouknow</a>
-    <br/>
-    <h1>for循环</h1>
-    <table>
-        <tr th:each="dept,iterStat:${depts}">
-            <td th:text="${dept.dname}">neo</td>
-            <td th:text="${iterStat.index}"></td>
-            <td th:text="${iterStat.count}"></td>
-            <td th:text="${iterStat.size}"></td>
-            <td th:text="${iterStat.first}"></td>
-            <td th:text="${iterStat.last}"></td>
-        </tr>
-    </table>
-    <h1>URL</h1>
-    <a th:href="@{http://www.ityouknow.com/{type}(type=${type})}">link1</a>
-    <br/>
-    <a th:href="@{http://www.ityouknow.com/{pageId}/can-use-springcloud.html(pageId=${pageId})}">view</a>
-    <br/>
-    <div th:style="'background:url(' + @{${img}} + ');width:500px;height:500px'">
-        <br/><br/><br/>
-    </div>
-    <br/>
-    <form>
-        <input th:value="${name}">
-        <input th:value="${age gt 30 ? '中年' : '青年'}">
-    </form>
-    <a th:if="${flag eq 'yes'}" th:href="@{http://favorites.ren}">home</a>
-    <br/>
-    <div>
-        <div th:switch="${sex}">
-            <p th:case="'woman'">她是一个姑娘</p>
-            <p th:case="'man'">他是一个爷们</p>
-            <p th:case="*">未知性别</p>
+    <div layout:fragment="content" class="container">
+        <h1 th:text="${message}">Hello World</h1>
+        <p th:text="${username}">先生</p>
+        <span th:text=" 'welcome to our application,' + ${username} + 'sir' "></span>
+        <br/>
+        <span th:text="|welcome to our application,${username} ! |"></span>
+        <br/>
+        <a th:if="${flag == 'yes'}" th:href="@{http://favorites.ren}">home</a>
+        <br/>
+        <a th:unless="${flag != 'no'}" th:href="@{http://www.ityouknow.com}">ityouknow</a>
+        <br/>
+        <h1>for循环</h1>
+        <table>
+            <tr th:each="dept,iterStat:${depts}">
+                <td th:text="${dept.dname}">neo</td>
+                <td th:text="${iterStat.index}"></td>
+                <td th:text="${iterStat.count}"></td>
+                <td th:text="${iterStat.size}"></td>
+                <td th:text="${iterStat.first}"></td>
+                <td th:text="${iterStat.last}"></td>
+            </tr>
+        </table>
+        <h1>URL</h1>
+        <a th:href="@{http://www.ityouknow.com/{type}(type=${type})}">link1</a>
+        <br/>
+        <a th:href="@{http://www.ityouknow.com/{pageId}/can-use-springcloud.html(pageId=${pageId})}">view</a>
+        <br/>
+        <div th:style="'background:url(' + @{${img}} + ');width:500px;height:500px'">
+            <br/><br/><br/>
+        </div>
+        <br/>
+        <form>
+            <input th:value="${name}">
+            <input th:value="${age gt 30 ? '中年' : '青年'}">
+        </form>
+        <a th:if="${flag eq 'yes'}" th:href="@{http://favorites.ren}">home</a>
+        <br/>
+        <div>
+            <div th:switch="${sex}">
+                <p th:case="'woman'">她是一个姑娘</p>
+                <p th:case="'man'">他是一个爷们</p>
+                <p th:case="*">未知性别</p>
+            </div>
         </div>
     </div>
 </body>
