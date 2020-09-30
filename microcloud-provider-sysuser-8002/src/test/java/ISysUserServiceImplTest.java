@@ -1,10 +1,7 @@
 import com.fangyou.User8002_StartSpringCloudApplication;
-import com.fangyou.controller.SysUserController;
-import com.fangyou.entity.Dept;
+import com.fangyou.dept.controller.SysUserController;
 import com.fangyou.entity.SysUser;
-import com.fangyou.service.ISysUserService;
-import com.fangyou.service.impl.SysUserServiceImpl;
-import org.hamcrest.Matchers;
+import com.fangyou.dept.service.ISysUserService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +13,6 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import javax.annotation.Resource;

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fangyou.mapper.SysUserMapper">
+<!--    查询所有用户-->
+    <select id="findUsers" resultType="com.fangyou.entity.SysUser">
+        select * from sys_user
+    </select>
+<!--    根据用户ID查找用户-->
+    <select id="findUserById" parameterType="long" resultType="com.fangyou.entity.SysUser">
+        select * from sys_user where id = #{id}
+    </select>
+    <select id="findSysUserByUserNameAndPassword" parameterType="com.fangyou.entity.SysUser" resultType="com.fangyou.entity.SysUser">
+        SELECT * FROM sys_user WHERE username = #{sysUser.username} AND password = #{sysUser.password}
+    </select>
+</mapper>

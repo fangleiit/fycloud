@@ -1,8 +1,7 @@
 import com.fangyou.Dept8001_StartSpringCloudApplication;
-import com.fangyou.controller.DeptRestController;
-import com.fangyou.service.IDeptService;
+import com.fangyou.dept.controller.DeptRestController;
+import com.fangyou.dept.service.IDeptService;
 import com.fangyou.entity.Dept;
-import jdk.nashorn.internal.runtime.regexp.joni.Matcher;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Before;
@@ -14,7 +13,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 

@@ -1,10 +1,5 @@
 server:
   port: 8001
-mybatis:
-  config-location: classpath:mybatis/mybatis.cfg.xml
-  type-aliases-package: com.fangyou.entity
-  mapper-locations:
-  - classpath:mybatis/mapper/**/*.xml
 spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
@@ -24,6 +19,12 @@ spring:
     user:
       name: admin
       password: admin
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    auto-mapping-behavior: full
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: com.fangyou.entity
 management:
   endpoints:
     web:
