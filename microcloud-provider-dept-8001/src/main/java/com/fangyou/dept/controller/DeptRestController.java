@@ -1,8 +1,8 @@
 package com.fangyou.dept.controller;
 
 
+import com.fangyou.dept.entity.DeptEntity;
 import com.fangyou.dept.service.IDeptService;
-import com.fangyou.entity.Dept;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +25,7 @@ public class DeptRestController {
     }
 
     @RequestMapping(value = "/dept/add",method = RequestMethod.POST)
-    public Object add(@RequestBody Dept dept){
+    public Object add(@RequestBody DeptEntity dept){
         return deptService.addDept(dept);
     }
 
@@ -54,7 +54,7 @@ public class DeptRestController {
         return "HelloFeign "+ name + " " + age;
     }
     @RequestMapping(value = "/helloFeign3",method = RequestMethod.POST)
-    public String helloFeign3(@RequestBody Dept dept){
+    public String helloFeign3(@RequestBody DeptEntity dept){
         return "HelloFeign" + dept.getDname();
     }
 

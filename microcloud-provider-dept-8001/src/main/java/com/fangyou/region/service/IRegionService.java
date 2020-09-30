@@ -1,11 +1,11 @@
 package com.fangyou.region.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.fangyou.dept.entity.TCodeRegionEntity;
+import com.fangyou.region.entity.CodeRegionEntity;
 
 import java.util.List;
 
-public interface IRegionService extends IService<TCodeRegionEntity> {
+public interface IRegionService extends IService<CodeRegionEntity> {
 
-    List<TCodeRegionEntity> treeTcodeRegionList(Integer id);
+    List<CodeRegionEntity> treeTcodeRegionList(Integer id);
 }

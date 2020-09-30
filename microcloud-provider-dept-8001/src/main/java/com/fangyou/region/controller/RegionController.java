@@ -1,7 +1,6 @@
 package com.fangyou.region.controller;
 
-import com.fangyou.dept.entity.TCodeRegionEntity;
-import com.fangyou.entity.TCodeRegionVo;
+import com.fangyou.region.entity.CodeRegionEntity;
 import com.fangyou.region.service.IRegionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +15,7 @@ public class RegionController {
     private IRegionService regionService;
 
     @RequestMapping("/region/treeList")
-    public List<TCodeRegionEntity> treeTcodeRegionList(){
+    public List<CodeRegionEntity> treeTcodeRegionList(){
         return regionService.treeTcodeRegionList(0);
     }
 

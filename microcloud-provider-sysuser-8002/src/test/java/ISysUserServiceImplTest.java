@@ -1,7 +1,7 @@
 import com.fangyou.User8002_StartSpringCloudApplication;
-import com.fangyou.dept.controller.SysUserController;
-import com.fangyou.entity.SysUser;
-import com.fangyou.dept.service.ISysUserService;
+import com.fangyou.sysuser.controller.SysUserController;
+import com.fangyou.sysuser.entity.SysUserEntity;
+import com.fangyou.sysuser.service.ISysUserService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,9 +29,9 @@ public class ISysUserServiceImplTest {
 
     @Test
     public void testFindAll(){
-        List<SysUser> susUsers = sysUserService.findUsers();
+        List<SysUserEntity> susUsers = sysUserService.findUsers();
         Assert.assertNotNull(susUsers);
-        for(SysUser sysUser : susUsers){
+        for(SysUserEntity sysUser : susUsers){
             System.out.println("realname:" + sysUser.getRealname());
             System.out.println("address:" + sysUser.getCurrentAddress() );
         }

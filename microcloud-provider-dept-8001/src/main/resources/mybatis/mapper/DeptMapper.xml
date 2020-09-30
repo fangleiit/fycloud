@@ -3,7 +3,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.fangyou.dept.mapper.DeptMapper">
     
-    <select id="findAll" resultType="com.fangyou.entity.Dept">
+    <select id="findAll" resultType="com.fangyou.dept.entity.DeptEntity">
         SELECT * FROM dept
     </select>
 </mapper>

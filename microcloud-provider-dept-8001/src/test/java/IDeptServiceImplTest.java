@@ -1,7 +1,7 @@
 import com.fangyou.Dept8001_StartSpringCloudApplication;
 import com.fangyou.dept.controller.DeptRestController;
+import com.fangyou.dept.entity.DeptEntity;
 import com.fangyou.dept.service.IDeptService;
-import com.fangyou.entity.Dept;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
 import org.junit.Before;
@@ -30,9 +30,9 @@ public class IDeptServiceImplTest {
 
     @Test
     public void testFindAll(){
-        List<Dept> depts = dptService.findAll();
+        List<DeptEntity> depts = dptService.findAll();
         Assert.assertNotNull(depts);
-        for(Dept dept : depts){
+        for(DeptEntity dept : depts){
             System.out.println("dName:" + dept.getDname());
             System.out.println("DeptNo:" + dept.getDeptno() );
         }
@@ -40,7 +40,7 @@ public class IDeptServiceImplTest {
 
     @Test
     public void testFindUserById(){
-        Dept dept = dptService.findById(1);
+        DeptEntity dept = dptService.findById(1);
         Assert.assertNotNull(dept);
         System.out.println("deptno → " + dept.getDeptno());
         System.out.println("dname → " + dept.getDname());
@@ -48,7 +48,7 @@ public class IDeptServiceImplTest {
 
     @Test
     public void testDoCreate(){
-        Dept dept = new Dept();
+        DeptEntity dept = new DeptEntity();
         dept.setDname("测试部-" + System.currentTimeMillis());
         System.out.println(dptService.addDept(dept));
     }
