@@ -5,6 +5,7 @@ import com.fangyou.dept.entity.DeptEntity;
 import com.fangyou.dept.service.IDeptService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -21,6 +22,9 @@ public class IDeptServiceImpl implements IDeptService {
     }
     @Override
     public Integer addDept(DeptEntity dept) {
+        if(!StringUtils.isEmpty(dept)){
+            dept.setLoc("mld8001");
+        }
         return deptDao.insert(dept);
     }
     @Override
