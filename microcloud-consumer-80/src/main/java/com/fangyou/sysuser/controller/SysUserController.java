@@ -21,6 +21,8 @@ public class SysUserController {
     @Resource
     private HttpHeaders headers;
 
+    public static final String GATWAYURL = "http://gateway5555:5555/api-a";
+
 
     /**
      * 查找所有用户信息
@@ -30,7 +32,7 @@ public class SysUserController {
     @ResponseBody
     public Object findSysUsers(){
         HttpEntity<Object> request = new HttpEntity<Object>(headers);
-        return restTemplate.exchange("http://sysuser8020/sysuser/findUsersList/", HttpMethod.GET,request, List.class).getBody();
+        return restTemplate.exchange(GATWAYURL + "/sysuser/findUsersList/", HttpMethod.GET,request, List.class).getBody();
     }
 
     /**
@@ -42,7 +44,7 @@ public class SysUserController {
     @ResponseBody
     public Object findSysUsersT(){
         HttpEntity<Object> request = new HttpEntity<Object>(headers);
-        return restTemplate.exchange("http://sysuser8002/sysuser/findUsersList/", HttpMethod.GET,request, List.class).getBody();
+        return restTemplate.exchange(GATWAYURL + "/sysuser/findUsersList/", HttpMethod.GET,request, List.class).getBody();
     }
 
     /**
@@ -54,7 +56,7 @@ public class SysUserController {
     @ResponseBody
     public Object findUsersById(long id){
         HttpEntity<Object> request = new HttpEntity<Object>(headers);
-        return restTemplate.exchange("http://sysuser8020/sysuser/findsysuserbyid/"+id,HttpMethod.GET,request, SysUserVo.class);
+        return restTemplate.exchange(GATWAYURL + "/sysuser/findsysuserbyid/"+id,HttpMethod.GET,request, SysUserVo.class);
     }
 
 }

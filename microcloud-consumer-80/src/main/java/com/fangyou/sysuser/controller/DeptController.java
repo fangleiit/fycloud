@@ -25,6 +25,8 @@ public class DeptController {
     @Resource
     private HttpHeaders headers;
 
+    public static final String GATWAYURL = "http://gateway5555:5555/api-dept";
+
     /**
      * 根据id查找部门信息
      * @param id
@@ -34,7 +36,7 @@ public class DeptController {
     @ResponseBody
     public Object findById(long id){
         HttpEntity<Object> request = new HttpEntity<Object>(headers);
-        DeptVo dept = JSONObject.parseObject(JSON.toJSONString(restTemplate.exchange("http://dept8010/dept/findById/"+id, HttpMethod.GET,request, DeptVo.class).getBody()),DeptVo.class);
+        DeptVo dept = JSONObject.parseObject(JSON.toJSONString(restTemplate.exchange(GATWAYURL + "/dept/findById/"+id, HttpMethod.GET,request, DeptVo.class).getBody()),DeptVo.class);
         return dept;
     }
 
@@ -46,7 +48,7 @@ public class DeptController {
     @ResponseBody
     public Object list(){
         HttpEntity<Object> request = new HttpEntity<Object>(headers);
-        List<DeptVo> depts = JSONObject.parseArray(JSON.toJSONString(restTemplate.exchange("http://dept8010/dept/list/",HttpMethod.GET,request,List.class).getBody()),DeptVo.class);
+        List<DeptVo> depts = JSONObject.parseArray(JSON.toJSONString(restTemplate.exchange(GATWAYURL + "/dept/list/",HttpMethod.GET,request,List.class).getBody()),DeptVo.class);
         return depts;
     }
 
@@ -59,7 +61,7 @@ public class DeptController {
     public Object treeList(){
         HttpEntity<Object> request = new HttpEntity<Object>(headers);
         List<TCodeRegionVo> tcodeRegionList =
-                JSONObject.parseArray(JSON.toJSONString(restTemplate.exchange("http://dept8010/region/treeList/",HttpMethod.GET,request,List.class).getBody()),TCodeRegionVo.class);
+                JSONObject.parseArray(JSON.toJSONString(restTemplate.exchange(GATWAYURL + "/region/treeList/",HttpMethod.GET,request,List.class).getBody()),TCodeRegionVo.class);
         return tcodeRegionList;
     }
 
@@ -73,7 +75,7 @@ public class DeptController {
     @ResponseBody
     public Object add(DeptVo dept){
         HttpEntity<Object> request = new HttpEntity<Object>(dept,headers);
-        boolean flag = restTemplate.exchange("http://dept8010/dept/add/",HttpMethod.POST,request,Boolean.class).getBody();
+        boolean flag = restTemplate.exchange(GATWAYURL + "/dept/add/",HttpMethod.POST,request,Boolean.class).getBody();
         return flag;
     }
 

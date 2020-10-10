@@ -3,7 +3,6 @@ package com.fangyou.filter;
 import com.netflix.zuul.IZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
-import org.apache.http.protocol.RequestContent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
