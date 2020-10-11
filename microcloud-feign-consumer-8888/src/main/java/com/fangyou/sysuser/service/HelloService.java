@@ -18,4 +18,10 @@ public interface HelloService {
 
     @RequestMapping(value = "/helloFeign3",method = RequestMethod.POST)
     String hello3(@RequestBody DeptVo dept);
+
+    @RequestMapping(value = "/dept/list",method = RequestMethod.GET)
+    Object deptList();
+
+    @RequestMapping(value = "/region/treeList",method = RequestMethod.GET)
+    Object regionTreeList();
 }

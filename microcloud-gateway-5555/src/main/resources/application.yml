@@ -18,6 +18,9 @@ zuul:
     api-dept:
       path: /api-dept/**
       serviceId: dept8010
+    api-feigndept:
+      path: /api-feigndept/**
+      serviceId: feign-consumer
 eureka:
   client:
     service-url:

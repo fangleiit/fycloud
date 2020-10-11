@@ -31,4 +31,21 @@ public class ConsumerController {
         return sb.toString();
     }
 
+    /**
+     * 获取所有部门
+     * @return
+     */
+    @RequestMapping(value = "/feign-deptList",method = RequestMethod.GET)
+    public Object deptList(){
+        return helloService.deptList();
+    }
+
+    /**
+     * 获取行政区划
+     * @return
+     */
+    @RequestMapping(value = "/feign-regiontreeList",method = RequestMethod.GET)
+    public Object regionList(){
+        return helloService.regionTreeList();
+    }
 }
