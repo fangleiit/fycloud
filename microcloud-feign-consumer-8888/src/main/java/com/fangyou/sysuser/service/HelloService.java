@@ -1,10 +1,11 @@
 package com.fangyou.sysuser.service;
 
+import com.fangyou.config.FullLogConfiguration;
 import com.fangyou.vo.dept.DeptVo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
-@FeignClient("dept8010")
+@FeignClient(value = "dept8010",configuration = FullLogConfiguration.class)
 public interface HelloService {
 
     @RequestMapping("/helloFeign")
